@@ -37,7 +37,11 @@ BattleResult:line 3
 
 ### From Marketplace
 
-Search for `Copy Reference C#` in the VS Code Extensions view.
+Marketplace:
+
+https://marketplace.visualstudio.com/items?itemName=BloodXCrescent.copy-reference-csharp
+
+You can also search for `Copy Reference C#` in the VS Code Extensions view.
 
 ### From VSIX
 
@@ -46,6 +50,10 @@ Download the packaged extension and install it with:
 ```powershell
 code --install-extension .\copy-reference-csharp-0.0.1.vsix
 ```
+
+Latest GitHub Release:
+
+https://github.com/bloodxcrescent/Copy-Reference-C-/releases/tag/v0.0.1
 
 ## Commands
 
