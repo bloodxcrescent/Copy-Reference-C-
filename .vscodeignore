@@ -1,0 +1,10 @@
+src/**
+tsconfig.json
+**/*.map
+node_modules/typescript/**
+node_modules/@types/**
+.omx/**
+.omc/**
+.vscode/**
+sample/**
+package-lock.json

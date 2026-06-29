@@ -1,0 +1,114 @@
+{
+  "name": "copy-reference-csharp",
+  "displayName": "Copy Reference C#",
+  "description": "Copy concise C# symbol and line references for Unity, AI prompts, bug reports, and code reviews.",
+  "version": "0.0.1",
+  "publisher": "BloodXCrescent",
+  "license": "SEE LICENSE IN LICENSE",
+  "icon": "assets/icon.png",
+  "homepage": "https://github.com/bloodxcrescent/Copy-Reference-C-",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bloodxcrescent/Copy-Reference-C-.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bloodxcrescent/Copy-Reference-C-/issues"
+  },
+  "keywords": [
+    "unity",
+    "csharp",
+    "reference",
+    "clipboard",
+    "productivity",
+    "bug-report",
+    "code-review",
+    "ai"
+  ],
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:csharp",
+    "onCommand:copyReferenceCSharp.copyVariableContext",
+    "onCommand:copyReferenceCSharp.copyPositionContext"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "copyReferenceCSharp.copyVariableContext",
+        "title": "Copy Variable Context"
+      },
+      {
+        "command": "copyReferenceCSharp.copyPositionContext",
+        "title": "Copy Position Context"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "copyReferenceCSharp.copyVariableContext",
+          "when": "editorTextFocus && resourceExtname == .cs",
+          "group": "copyReferenceCSharp@1"
+        },
+        {
+          "command": "copyReferenceCSharp.copyPositionContext",
+          "when": "editorTextFocus && resourceExtname == .cs",
+          "group": "copyReferenceCSharp@2"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "copyReferenceCSharp.copyVariableContext",
+        "key": "ctrl+alt+c",
+        "when": "editorTextFocus && resourceExtname == .cs"
+      },
+      {
+        "command": "copyReferenceCSharp.copyPositionContext",
+        "key": "alt+shift+1",
+        "when": "editorTextFocus && resourceExtname == .cs"
+      }
+    ],
+    "configuration": {
+      "title": "Copy Reference C#",
+      "properties": {
+        "copySymbolContext.includeNamespace": {
+          "type": "boolean",
+          "default": false,
+          "description": "Include namespace segments before the file name when building copied references."
+        },
+        "copySymbolContext.includeFilePath": {
+          "type": "boolean",
+          "default": false,
+          "description": "Include the workspace-relative file path before the symbol reference."
+        },
+        "copySymbolContext.separator": {
+          "type": "string",
+          "default": ".",
+          "description": "Separator used between namespace, file, type, and method segments."
+        },
+        "copySymbolContext.dedupe": {
+          "type": "boolean",
+          "default": true,
+          "description": "Remove duplicate copied entries when multiple cursors or lines resolve to the same location."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc -p ./",
+    "check": "tsc -p ./ --noEmit",
+    "vscode:prepublish": "npm run build",
+    "package:vsix": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/vscode": "^1.90.0",
+    "@vscode/vsce": "^3.9.2",
+    "typescript": "^5.5.4"
+  }
+}
